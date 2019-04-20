@@ -28,6 +28,10 @@ public class Sprite {
 		}
 	}
 	
+	public Sprite() {
+		
+	}
+	
 	public BufferedImage getNext(){ //Returns the next image frame
 		frame++;
 		if (frame == images[index].length) frame = 0; //Circle back to the start of the array
