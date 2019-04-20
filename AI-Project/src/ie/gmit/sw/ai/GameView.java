@@ -4,28 +4,49 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 public class GameView extends JPanel implements ActionListener{
+	
+
+	// same as sprite controller for game view
+	private static volatile GameView single_instance = null;
+	
 	private static final long serialVersionUID = 1L;
 	public static final int DEFAULT_VIEW_SIZE = 800;	
 	private int cellspan = 5;	
 	private int cellpadding = 2;
-	private Maze maze;
+	private static Maze maze;
 	private Sprite[] sprites;
 	private int enemy_state = 5;
 	private Timer timer;
-	private int currentRow;
-	private int currentCol;
+	private static int currentRow;
+	private static int currentCol;
 	private boolean zoomOut = false;
 	private int imageIndex = -1;
 	private int offset = 48; //The number 0 is ASCII 48.
 	private Color[] reds = {new Color(255,160,122), new Color(139,0,0), new Color(255, 0, 0)}; //Animate enemy "dots" to make them easier to see
 	
 	public GameView(Maze maze) throws Exception{
-		this.maze = maze;
+		GameView.maze = maze;
 		setBackground(Color.LIGHT_GRAY);
 		setDoubleBuffered(true);
 		timer = new Timer(300, this);
 		timer.start();
 	}
+	
+	public static synchronized GameView getInstance(Maze model) throws Exception
+    {
+
+		if (single_instance == null) {
+		    single_instance = new GameView(model);
+		}
+		
+		return single_instance;
+    } 
+	
+	public static synchronized GameView getInstance() throws Exception
+    {
+        	return single_instance;
+    } 
+	
 	
 	public void setCurrentRow(int row) {
 		if (row < cellpadding){
@@ -99,6 +120,22 @@ public class GameView extends JPanel implements ActionListener{
 			enemy_state = 5;
 		}
 		this.repaint();
+	}
+	
+	public static synchronized Maze getMaze() {
+		return maze;
+	}
+	
+	public static synchronized int getCurrentRow() {
+			return currentRow;
+	}
+
+	public static synchronized int getCurrentCol() {
+			return currentCol;
+	}
+
+	public static synchronized void setMaze(int row, int col, char c) {
+		maze.set(row, col, c);
 	}
 	
 	public void setSprites(Sprite[] sprites){
