@@ -1,7 +1,8 @@
 package ie.gmit.sw.ai;
 
 public class Maze {
-	private char[][] maze; // An array does not lend itself to the type of mazge generation alogs we use in
+
+	private static char[][] maze; // An array does not lend itself to the type of mazge generation alogs we use in
 							// the labs. There are no "walls" to carve...
 
 	public Maze(int dimension) {
@@ -48,11 +49,12 @@ public class Maze {
 			if (maze[row][col] == replace) {
 				maze[row][col] = feature;
 				// need to create thread class for spiders
-				/*
-				 * int[] pos = {row, col};
-				 * 
-				 * SpiderThread st = new SpiderThread(pos, feature); st.start();
-				 */
+				
+				  int[] pos = {row, col};
+				  
+				  SpiderThread st = new SpiderThread(pos, feature, 100); 
+				  st.start();
+				 
 
 				counter++;
 			}
@@ -80,20 +82,20 @@ public class Maze {
 		return row > 1 && maze[row - 1][col] == '\u0020' && maze[row - 1][col + 1] == '\u0020';
 	}
 
-	public char[][] getMaze() {
-		return this.maze;
+	public static char[][] getMaze() {
+		return maze;
 	}
 
 	public char get(int row, int col) {
-		return this.maze[row][col];
+		return Maze.maze[row][col];
 	}
 
 	public void set(int row, int col, char c) {
-		this.maze[row][col] = c;
+		Maze.maze[row][col] = c;
 	}
 
 	public int size() {
-		return this.maze.length;
+		return Maze.maze.length;
 	}
 
 	public String toString() {
