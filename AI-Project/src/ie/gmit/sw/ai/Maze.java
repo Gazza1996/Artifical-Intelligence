@@ -3,7 +3,7 @@ package ie.gmit.sw.ai;
 public class Maze {
 
 	private static char[][] maze; // An array does not lend itself to the type of mazge generation alogs we use in
-							// the labs. There are no "walls" to carve...
+	// the labs. There are no "walls" to carve...
 
 	public Maze(int dimension) {
 		maze = new char[dimension][dimension];
@@ -41,21 +41,22 @@ public class Maze {
 	}
 
 	private void addSpider(char feature, char replace, int number) {
+		
 		int counter = 0;
+		
 		while (counter < feature) { // Keep looping until feature number of items have been added
+			// rows and cols
 			int row = (int) (maze.length * Math.random());
 			int col = (int) (maze[0].length * Math.random());
 
 			if (maze[row][col] == replace) {
 				maze[row][col] = feature;
-				// need to create thread class for spiders
-				
-				  int[] pos = {row, col};
-				  
-				  SpiderThread st = new SpiderThread(pos, feature, 100); 
-				  st.start();
-				 
 
+				int[] pos = { row, col };
+				
+				// call thread class for spiders
+				SpiderThread st = new SpiderThread(pos, feature, 100);
+				st.start();
 				counter++;
 			}
 		}
