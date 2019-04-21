@@ -162,22 +162,22 @@ public class GameRunner extends Thread implements KeyListener {
 		 */
 
 		// set val to 0
-		int val = 0;
+		int i = 0;
 		// each state (chase, hide etc), tested on NN will return a value
 		
 		// for testing purposes only
-		val = EncogNN.getState(0, 0, 0, 0);
-		System.out.println(val);
-		val = EncogNN.getState(1, 1, 0, 0);
-		System.out.println(val);
-		val = EncogNN.getState(0, 0, 0, 0);
-		System.out.println(val);
-		val = EncogNN.getState(0, 0, 0, 0);
-		System.out.println(val);
-		val = EncogNN.getState(1, 1, 1, 0);
-		System.out.println(val);
-		val = EncogNN.getState(0, 0, 0, 1);
-		System.out.println(val);
+		i = EncogNN.getState(0, 0, 0, 0);
+		System.out.println(i);
+		i = EncogNN.getState(1, 1, 0, 0);
+		System.out.println(i);
+		i = EncogNN.getState(0, 0, 0, 0);
+		System.out.println(i);
+		i = EncogNN.getState(0, 0, 0, 0);
+		System.out.println(i);
+		i = EncogNN.getState(1, 1, 1, 0);
+		System.out.println(i);
+		i = EncogNN.getState(0, 0, 0, 1);
+		System.out.println(i);
 		// Start game
 		new Thread(new GameRunner());
 

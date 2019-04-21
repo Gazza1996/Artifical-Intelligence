@@ -11,22 +11,12 @@ import org.encog.neural.networks.BasicNetwork;
 import org.encog.neural.networks.layers.BasicLayer;
 import org.encog.neural.networks.training.propagation.resilient.ResilientPropagation;
 
-/* --- Inputs ---
- * 1 - Strength
- * 2 - Venom
- * 3 - spider beside player
- * 4 - hidden spider
- * 
- * --- output ---
- * 1 - chase player
- * 2 - attack player
- * 3 - hide from player
- * 
- */
 
 public class EncogNN {
 
 	// taken from in class labs for NN
+	
+	// names set from imports for encog
 	private static BasicNetwork network;
 	private static MLDataSet trainingSet;
 	private static ResilientPropagation train;
@@ -40,6 +30,9 @@ public class EncogNN {
 			{ 0, 1, 0, 0 }, { 1, 0, 0, 0 }, { 0, 1, 0, 0 }, { 0, 0, 1, 0 }, { 0, 0, 0, 1 }, { 0, 0, 1, 0 } };
 
 	public void go() {
+		/*
+		 * steps to carry out NN work
+		 */
 
 		// Step 1 Declare Network Topology
 		network = createNetwork();
@@ -58,6 +51,9 @@ public class EncogNN {
 
 	}
 
+	/*
+	 * create the NN
+	 */
 	BasicNetwork createNetwork() {
 		// network set up
 		BasicNetwork network = new BasicNetwork();
@@ -71,7 +67,9 @@ public class EncogNN {
 		return network;
 
 	}
-
+	/*
+	 * Training
+	 */
 	ResilientPropagation trainNetwork(BasicNetwork network, MLDataSet trainingSet) {
 		// trainig the NN to recongise some stuff
 		ResilientPropagation train = new ResilientPropagation(network, trainingSet);
