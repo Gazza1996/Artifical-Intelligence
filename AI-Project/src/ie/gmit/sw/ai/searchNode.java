@@ -11,8 +11,7 @@ class searchNode {
 }
 
 class Search
-{  
-	
+{
     public searchNode findPath(char[][] matrix, int row, int col) {
         return null;
     }

@@ -63,6 +63,8 @@ public class Maze {
 	}
 
 	// creates a random maze on build
+	// need to add randomised exits
+	
 	private void buildMaze() {
 		for (int row = 1; row < maze.length - 1; row++) {
 			for (int col = 1; col < maze[row].length - 1; col++) {
@@ -79,7 +81,7 @@ public class Maze {
 		}
 	}
 
-	private boolean isRoom(int row, int col) { // Flaky and only works half the time, but reduces the number of rooms
+	private boolean isRoom(int row, int col) {
 		return row > 1 && maze[row - 1][col] == '\u0020' && maze[row - 1][col + 1] == '\u0020';
 	}
 

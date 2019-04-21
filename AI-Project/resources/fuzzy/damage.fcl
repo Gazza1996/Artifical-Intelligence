@@ -1,4 +1,4 @@
-FUNCTION_BLOCK damageoutput
+FUNCTION_BLOCK playerDamage
 
 VAR_INPUT
 	output : REAL;
@@ -52,7 +52,7 @@ END_RULEBLOCK
 
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK AttackDamage
+FUNCTION_BLOCK spiderAttack
 
 VAR_INPUT
 	attack : REAL;
@@ -89,7 +89,7 @@ END_RULEBLOCK
 
 END_FUNCTION_BLOCK
 
-FUNCTION_BLOCK VenomPotency
+FUNCTION_BLOCK VenomAttack
 
 VAR_INPUT
 	venom : REAL;
