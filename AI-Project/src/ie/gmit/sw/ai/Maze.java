@@ -55,7 +55,7 @@ public class Maze {
 				int[] pos = { row, col };
 				
 				// call thread class for spiders
-				SpiderThread st = new SpiderThread(pos, feature, 100);
+				SpiderThread st = new SpiderThread(pos, feature);
 				st.start();
 				counter++;
 			}

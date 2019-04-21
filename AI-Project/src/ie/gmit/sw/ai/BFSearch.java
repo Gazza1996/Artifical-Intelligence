@@ -4,7 +4,7 @@ import java.util.List;
 
 public class BFSearch {
 
-	// static variable single_instance of type Singleton
+	// https://stackoverflow.com/questions/8224470/calculating-manhattan-distance
 	private static volatile Search single_instance = null;
 
 	public static synchronized Search getInstance() throws Exception {

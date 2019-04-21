@@ -5,10 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GameRunner extends Thread implements KeyListener {
-	// =============== Constants  ===============
+	// =============== Constants ===============
 	private static final int MAZE_DIMENSION = 100;
-	
-	// =============== Variables  ===============
+
+	// =============== Variables ===============
 	private static final int IMAGE_COUNT = 14;
 	private ControlledSprite player;
 	private GameView view;
@@ -17,7 +17,7 @@ public class GameRunner extends Thread implements KeyListener {
 	private int currentCol;
 
 	public GameRunner() throws Exception {
-		
+
 		System.out.println("Maze being built.....\n");
 
 		model = new Maze(MAZE_DIMENSION);
@@ -146,9 +146,38 @@ public class GameRunner extends Thread implements KeyListener {
 
 		return sprites;
 	}
-	
+
 	// Main method to start the game
 	public static void main(String[] args) throws Exception {
+
+		new EncogNN().go();
+		
+		/*
+		 * Problems here with these values.
+		 * Some values are not returning correctly.
+		 * Possibly a problem in using encog.
+		 * Main problem is player is getting attacked by a spider that isn't there.
+		 * This is probably an error in the NN predicting where a spider is
+		 * 
+		 */
+
+		// set val to 0
+		int val = 0;
+		// each state (chase, hide etc), tested on NN will return a value
+		
+		// for testing purposes only
+		val = EncogNN.getState(0, 0, 0, 0);
+		System.out.println(val);
+		val = EncogNN.getState(1, 1, 0, 0);
+		System.out.println(val);
+		val = EncogNN.getState(0, 0, 0, 0);
+		System.out.println(val);
+		val = EncogNN.getState(0, 0, 0, 0);
+		System.out.println(val);
+		val = EncogNN.getState(1, 1, 1, 0);
+		System.out.println(val);
+		val = EncogNN.getState(0, 0, 0, 1);
+		System.out.println(val);
 		// Start game
 		new Thread(new GameRunner());
 
