@@ -85,7 +85,7 @@ public class EncogNN {
 
 		train.finishTraining(); // finish
 
-		System.out.println("[INFO] NN finished in... " + epoch + " epochs with error ()= " + train.getError());
+		System.out.println("[INFO] NN finished in... " + epoch + " epochs ");
 
 		return train;
 	}
