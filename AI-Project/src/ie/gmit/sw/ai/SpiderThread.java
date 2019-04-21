@@ -14,7 +14,7 @@ public class SpiderThread extends Thread{
 
 	ScheduledExecutorService exec = Executors.newSingleThreadScheduledExecutor();
 	
-	//keep enemy pos
+	// keep enemy pos
 	private int[] pos = new int[2];
 	private char val;
 	
@@ -27,29 +27,22 @@ public class SpiderThread extends Thread{
 		this.pos = p;
 		this.val= v;
 		this.strength = s;
+		/*
+		 * 
+		 * 
+		 * 
+		 * 
+		 * 
+		 */
 		
 	}
-	
-	protected void attack() {
-		
-		double attack = getAttackValue();
-		
-		double potency = getPotencyValue();
-		
-		int damage = getDamageValue(attack, potency);
-	
-		try {
-		
-			ControlledSprite.getInstance().setHealth(ControlledSprite.getInstance().getHealth() - damage);
-			
-			JOptionPane.showMessageDialog(null, getSpidertype() +" Spider Dealt " + damage + " damage"
-					+ "\nYou have " +ControlledSprite.getInstance().getHealth() +" Health left");
+	/*
+	 * 
+	 * 
+	 * 
+	 * 
+	 */
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-	}
 	
 	public String getSpidertype() {
 		
@@ -74,50 +67,12 @@ public class SpiderThread extends Thread{
 			return "";
 		}
 	}
-	
-	public double getAttackValue() {
-		
-		FIS file = FIS.load("resources/fuzzy/damageLogic.fcl", true);
-		
-		FunctionBlock damageLogic = file.getFunctionBlock("AttackDamage");
-		
-		damageLogic.setVariable("attack", strength);
-		
-		damageLogic.evaluate();
-		
-		return damageLogic.getVariable("damage").getValue();
-		
-	}
-	
-	public double getPotencyValue() {
-		
-		FIS file = FIS.load("resources/fuzzy/venom.fcl", true);
-		
-		FunctionBlock damageLogic = file.getFunctionBlock("VenomPotency");
-		
-		damageLogic.setVariable("venom", venom);
-		
-		damageLogic.evaluate();
-		
-		return damageLogic.getVariable("potency").getValue();
-		
-	}
-	
-	public int getDamageValue(double attack, double potency) {
-		
-		FIS file = FIS.load("resources/fuzzy/damage.fcl", true);
-		
-		FunctionBlock damageLogic = file.getFunctionBlock("damageoutput");
-		
-		damageLogic.setVariable("output", attack);
-		
-		damageLogic.setVariable("potencyofvenom", potency);
-		
-		damageLogic.evaluate();
-		
-		return (int)damageLogic.getVariable("damagedealt").getValue();
-		
-	}
+	/*
+	 * 
+	 * 
+	 * 
+	 */
+
 
 	public void findPlayer() throws Exception {
 		
@@ -131,7 +86,7 @@ public class SpiderThread extends Thread{
 		move(pos[0], pos[1], node, val);
 		
 	}
-        
+    // make spiders move 
 	public void move(int row, int col, searchNode node, char val) throws Exception {
 		
 		GameView.getInstance();
@@ -147,6 +102,8 @@ public class SpiderThread extends Thread{
 		
 	}
 	
+	
+	// getters/setters
 	public int[] getPos() {
 		return pos;
 	}

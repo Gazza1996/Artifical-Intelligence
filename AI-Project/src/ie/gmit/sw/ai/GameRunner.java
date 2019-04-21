@@ -5,7 +5,10 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class GameRunner extends Thread implements KeyListener {
+	// =============== Constants  ===============
 	private static final int MAZE_DIMENSION = 100;
+	
+	// =============== Variables  ===============
 	private static final int IMAGE_COUNT = 14;
 	private ControlledSprite player;
 	private GameView view;
@@ -14,6 +17,8 @@ public class GameRunner extends Thread implements KeyListener {
 	private int currentCol;
 
 	public GameRunner() throws Exception {
+		
+		System.out.println("Maze being built.....\n");
 
 		model = new Maze(MAZE_DIMENSION);
 		view = GameView.getInstance(model); // called on instance on game view
@@ -141,9 +146,10 @@ public class GameRunner extends Thread implements KeyListener {
 
 		return sprites;
 	}
-
+	
+	// Main method to start the game
 	public static void main(String[] args) throws Exception {
-
+		// Start game
 		new Thread(new GameRunner());
 
 	}
